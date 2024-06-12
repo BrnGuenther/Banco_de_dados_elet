@@ -156,3 +156,9 @@ INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (2, 1);
 
 INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (4, 3);
 INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (4, 5);
+
+ALTER TABLE Filmes ADD COLUMN Nota INT;
+UPDATE Filmes SET Nota = 5 WHERE ROWID = 1;
+UPDATE Filmes SET Nota = 3 WHERE ROWID = 2;
+UPDATE Filmes SET Nota = 4 WHERE ROWID = 3;
+UPDATE Filmes SET Nota = 1 WHERE ROWID = 4;
