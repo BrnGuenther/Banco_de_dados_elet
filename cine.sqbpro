@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/gabri/Desktop/Banco de Dados/cine.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="pragmas structure query browser" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1505"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,15:mainAcompanhaSessao"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="AcompanhaSessao" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="120"/><column index="2" value="68"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Diretores" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="68"/><column index="2" value="89"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Filmes" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="53"/><column index="2" value="133"/><column index="3" value="68"/><column index="4" value="68"/><column index="5" value="69"/><column index="6" value="113"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Generos" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="68"/><column index="2" value="89"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Sessoes" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort><column index="1" mode="1"/></sort><column_widths><column index="1" value="68"/><column index="2" value="347"/><column index="3" value="264"/><column index="4" value="109"/><column index="5" value="53"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE Generos (
+GeneroID INTEGER PRIMARY KEY,
+NomeGenero TEXT NOT NULL
+);
+
+INSERT INTO Generos(GeneroID, NomeGenero) Values (1, &quot;Ação&quot;);
+INSERT INTO Generos(GeneroID, NomeGenero) Values (2, &quot;Ficção&quot;);
+INSERT INTO Generos(GeneroID, NomeGenero) Values (3, &quot;Romance&quot;);
+INSERT INTO Generos(GeneroID, NomeGenero) Values (4, &quot;Comédia&quot;);
+INSERT INTO Generos(GeneroID, NomeGenero) Values (5, &quot;Terror&quot;);
+INSERT INTO Generos(GeneroID, NomeGenero) Values (6, &quot;Animação&quot;);
+INSERT INTO Generos(GeneroID, NomeGenero) Values (7, &quot;Drama&quot;);
+
+CREATE TABLE Diretores (
+DiretorID INTEGER PRIMARY KEY,
+NomeDiretor TEXT NOT NULL
+);
+
+INSERT INTO Diretores(DiretorID, NomeDiretor) Values (1, &quot;Christopher Nolan&quot;);
+INSERT INTO Diretores(DiretorID, NomeDiretor) Values (2, &quot;Steven Spielberg&quot;);
+INSERT INTO Diretores(DiretorID, NomeDiretor) Values (3, &quot;Quentin Tarantino&quot;);
+INSERT INTO Diretores(DiretorID, NomeDiretor) Values (4, &quot;Martin Scorsese&quot;);
+INSERT INTO Diretores(DiretorID, NomeDiretor) Values (5, &quot;Alfred Hitchcock&quot;);
+
+CREATE TABLE Atores (
+AtorID INTEGER PRIMARY KEY,
+NomeAtor TEXT NOT NULL
+);
+
+INSERT INTO Atores(AtorID, NomeAtor) Values (1, &quot;Leonardo DiCaprio&quot;);
+INSERT INTO Atores(AtorID, NomeAtor) Values (2, &quot;Robert Downey Jr&quot;);
+INSERT INTO Atores(AtorID, NomeAtor) Values (3, &quot;Tom Hanks&quot;);
+INSERT INTO Atores(AtorID, NomeAtor) Values (4, &quot;Margot Robbie&quot;);
+INSERT INTO Atores(AtorID, NomeAtor) Values (5, &quot;Natalie Portman&quot;);
+INSERT INTO Atores(AtorID, NomeAtor) Values (6, &quot;Angelina Jolie&quot;);
+
+CREATE TABLE Estudios (
+EstudioID INTEGER PRIMARY KEY,
+NomeEstudio TEXT NOT NULL
+);
+
+INSERT INTO Estudios(EstudioID, NomeEstudio) Values (1, &quot;Warner Bros&quot;);
+INSERT INTO Estudios(EstudioID, NomeEstudio) Values (2, &quot;Walt Disney&quot;);
+INSERT INTO Estudios(EstudioID, NomeEstudio) Values (3, &quot;Universal Pictures&quot;);
+INSERT INTO Estudios(EstudioID, NomeEstudio) Values (4, &quot;Paramount Pictures&quot;);
+INSERT INTO Estudios(EstudioID, NomeEstudio) Values (5, &quot;Columbia Pictures&quot;);
+
+CREATE TABLE Acompanhantes (
+AcompanhanteID INTEGER PRIMARY KEY,
+NomeAcompanhante TEXT NOT NULL
+);
+
+INSERT INTO Acompanhantes(AcompanhanteID, NomeAcompanhante) Values (1, &quot;Chico Bento&quot;);
+INSERT INTO Acompanhantes(AcompanhanteID, NomeAcompanhante) Values (2, &quot;Mônica&quot;);
+INSERT INTO Acompanhantes(AcompanhanteID, NomeAcompanhante) Values (3, &quot;Cebolinha&quot;);
+INSERT INTO Acompanhantes(AcompanhanteID, NomeAcompanhante) Values (4, &quot;Cascão&quot;);
+INSERT INTO Acompanhantes(AcompanhanteID, NomeAcompanhante) Values (5, &quot;Magali&quot;);
+
+CREATE TABLE Sessoes (
+SessaoID INTEGER PRIMARY KEY,
+NomeSessao TEXT NOT NULL,
+CometarioSessao TEXT,
+Local TEXT,
+FilmeID INTEGER REFERENCES Filmes(FilmeID)
+)
+
+CREATE TABLE Filmes (
+FilmeID INTEGER PRIMARY KEY,
+ComentarioFilme TEXT,
+NomeFilme TEXT,
+DiretorID INTEGER REFERENCES Diretores(DiretorID),
+SessaoID INTEGER REFERENCES Sessoes(SessaoID),
+EstudioID INTEGER REFERENCES Estudios(EstudioID)
+);
+
+INSERT INTO Sessoes(SessaoID, Local) Values (1, &quot;Shopping Palladium&quot;);
+INSERT INTO Filmes(FilmeID, NomeFilme, DiretorID, SessaoID, EstudioID) Values (3, &quot;O Lobo de Wall Street&quot;, 5, 1, 1);
+UPDATE Sessoes
+SET FilmeID = 3
+WHERE SessaoID = 1;
+
+INSERT INTO Sessoes(SessaoID, ComentarioSessao, Local) Values (2, &quot;Nada como um filme em casa com as crianças&quot;, &quot;Em Casa&quot;);
+INSERT INTO Filmes(FilmeID, NomeFilme, DiretorID, SessaoID, EstudioID) Values (1, &quot;Os Incríveis&quot;, 3, 2, 2);
+UPDATE Sessoes
+set FilmeID = 1
+WHERE SessaoID = 2;
+UPDATE Filmes
+SET ComentarioFilme = &quot;A melhor animação de todos os tempos&quot;
+WHERE FilmeID = 1;
+
+INSERT INTO Sessoes(SessaoID, ComentarioSessao, Local) Values (3, &quot;A Pipoca estava muito cara&quot;, &quot;Shopping Jockey Plaza&quot;);
+INSERT INTO Filmes(FilmeID, NomeFilme, ComentarioFilme, DiretorID, SessaoID, EstudioID) Values (4, &quot;Harry Potter e A Pedra Filosofal&quot;, &quot;Não sou fã dessa série&quot;, 4, 3, 1);
+UPDATE Sessoes
+SET FilmeID = 4
+WHERE SessaoID = 3;
+
+INSERT INTO Sessoes(SessaoID, Local) Values (4, &quot;Cine Passeio&quot;);
+INSERT INTO Filmes(FilmeID, NomeFilme, DiretorID, SessaoID, EstudioID) Values (2, &quot;Transformers 2&quot;, 2, 4, 4);
+UPDATE Sessoes
+SET FilmeID = 2
+WHERE SessaoID = 4
+
+INSERT INTO Generos(GeneroID, NomeGenero) Values (1, &quot;Ação&quot;);
+INSERT INTO Generos(GeneroID, NomeGenero) Values (2, &quot;Ficção&quot;);
+INSERT INTO Generos(GeneroID, NomeGenero) Values (3, &quot;Romance&quot;);
+INSERT INTO Generos(GeneroID, NomeGenero) Values (4, &quot;Comédia&quot;);
+INSERT INTO Generos(GeneroID, NomeGenero) Values (5, &quot;Terror&quot;);
+INSERT INTO Generos(GeneroID, NomeGenero) Values (6, &quot;Animação&quot;);
+INSERT INTO Generos(GeneroID, NomeGenero) Values (7, &quot;Drama&quot;);
+
+CREATE TABLE GenerosFilmes (
+GeneroID INTEGER REFERENCES Generos(GeneroID),
+FilmeID INTEGER REFERENCES Filmes(FilmeID)
+);
+
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(1, 1);
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(1, 6);
+
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(2, 1);
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(2, 2);
+
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(3, 4);
+
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(4, 1);
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(4, 2);
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(4, 7);
+
+
+CREATE TABLE AtoresFilmes (
+AtorID INTEGER REFERENCES Atores(AtorID),
+FilmeID INTEGER REFERENCES Filmes(FilmeID)
+)
+
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(1, 1);
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(1, 5);
+
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(2, 3);
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(2, 5);
+
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(3, 1);
+
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(4, 2);
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(4, 4);
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(4, 6);
+
+CREATE TABLE AcompanhaSessao (
+AcompanhanteID INTEGER REFERENCES Acompanhantes(AcompanhanteID),
+SessaoID INTEGER REFERENCES Sessoes(SessaoID)
+);
+
+INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (1, 3);
+INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (1, 4);
+
+INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (2, 2);
+INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (2, 1);
+
+INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (4, 3);
+INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (4, 5);</sql><current_tab id="0"/></tab_sql></sqlb_project>

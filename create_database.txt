@@ -1,0 +1,158 @@
+CREATE TABLE Generos (
+GeneroID INTEGER PRIMARY KEY,
+NomeGenero TEXT NOT NULL
+);
+
+INSERT INTO Generos(GeneroID, NomeGenero) Values (1, "Ação");
+INSERT INTO Generos(GeneroID, NomeGenero) Values (2, "Ficção");
+INSERT INTO Generos(GeneroID, NomeGenero) Values (3, "Romance");
+INSERT INTO Generos(GeneroID, NomeGenero) Values (4, "Comédia");
+INSERT INTO Generos(GeneroID, NomeGenero) Values (5, "Terror");
+INSERT INTO Generos(GeneroID, NomeGenero) Values (6, "Animação");
+INSERT INTO Generos(GeneroID, NomeGenero) Values (7, "Drama");
+
+CREATE TABLE Diretores (
+DiretorID INTEGER PRIMARY KEY,
+NomeDiretor TEXT NOT NULL
+);
+
+INSERT INTO Diretores(DiretorID, NomeDiretor) Values (1, "Christopher Nolan");
+INSERT INTO Diretores(DiretorID, NomeDiretor) Values (2, "Steven Spielberg");
+INSERT INTO Diretores(DiretorID, NomeDiretor) Values (3, "Quentin Tarantino");
+INSERT INTO Diretores(DiretorID, NomeDiretor) Values (4, "Martin Scorsese");
+INSERT INTO Diretores(DiretorID, NomeDiretor) Values (5, "Alfred Hitchcock");
+
+CREATE TABLE Atores (
+AtorID INTEGER PRIMARY KEY,
+NomeAtor TEXT NOT NULL
+);
+
+INSERT INTO Atores(AtorID, NomeAtor) Values (1, "Leonardo DiCaprio");
+INSERT INTO Atores(AtorID, NomeAtor) Values (2, "Robert Downey Jr");
+INSERT INTO Atores(AtorID, NomeAtor) Values (3, "Tom Hanks");
+INSERT INTO Atores(AtorID, NomeAtor) Values (4, "Margot Robbie");
+INSERT INTO Atores(AtorID, NomeAtor) Values (5, "Natalie Portman");
+INSERT INTO Atores(AtorID, NomeAtor) Values (6, "Angelina Jolie");
+
+CREATE TABLE Estudios (
+EstudioID INTEGER PRIMARY KEY,
+NomeEstudio TEXT NOT NULL
+);
+
+INSERT INTO Estudios(EstudioID, NomeEstudio) Values (1, "Warner Bros");
+INSERT INTO Estudios(EstudioID, NomeEstudio) Values (2, "Walt Disney");
+INSERT INTO Estudios(EstudioID, NomeEstudio) Values (3, "Universal Pictures");
+INSERT INTO Estudios(EstudioID, NomeEstudio) Values (4, "Paramount Pictures");
+INSERT INTO Estudios(EstudioID, NomeEstudio) Values (5, "Columbia Pictures");
+
+CREATE TABLE Acompanhantes (
+AcompanhanteID INTEGER PRIMARY KEY,
+NomeAcompanhante TEXT NOT NULL
+);
+
+INSERT INTO Acompanhantes(AcompanhanteID, NomeAcompanhante) Values (1, "Chico Bento");
+INSERT INTO Acompanhantes(AcompanhanteID, NomeAcompanhante) Values (2, "Mônica");
+INSERT INTO Acompanhantes(AcompanhanteID, NomeAcompanhante) Values (3, "Cebolinha");
+INSERT INTO Acompanhantes(AcompanhanteID, NomeAcompanhante) Values (4, "Cascão");
+INSERT INTO Acompanhantes(AcompanhanteID, NomeAcompanhante) Values (5, "Magali");
+
+CREATE TABLE Sessoes (
+SessaoID INTEGER PRIMARY KEY,
+NomeSessao TEXT NOT NULL,
+CometarioSessao TEXT,
+Local TEXT,
+FilmeID INTEGER REFERENCES Filmes(FilmeID)
+)
+
+CREATE TABLE Filmes (
+FilmeID INTEGER PRIMARY KEY,
+ComentarioFilme TEXT,
+NomeFilme TEXT,
+DiretorID INTEGER REFERENCES Diretores(DiretorID),
+SessaoID INTEGER REFERENCES Sessoes(SessaoID),
+EstudioID INTEGER REFERENCES Estudios(EstudioID)
+);
+
+INSERT INTO Sessoes(SessaoID, Local) Values (1, "Shopping Palladium");
+INSERT INTO Filmes(FilmeID, NomeFilme, DiretorID, SessaoID, EstudioID) Values (3, "O Lobo de Wall Street", 5, 1, 1);
+UPDATE Sessoes
+SET FilmeID = 3
+WHERE SessaoID = 1;
+
+INSERT INTO Sessoes(SessaoID, ComentarioSessao, Local) Values (2, "Nada como um filme em casa com as crianças", "Em Casa");
+INSERT INTO Filmes(FilmeID, NomeFilme, DiretorID, SessaoID, EstudioID) Values (1, "Os Incríveis", 3, 2, 2);
+UPDATE Sessoes
+set FilmeID = 1
+WHERE SessaoID = 2;
+UPDATE Filmes
+SET ComentarioFilme = "A melhor animação de todos os tempos"
+WHERE FilmeID = 1;
+
+INSERT INTO Sessoes(SessaoID, ComentarioSessao, Local) Values (3, "A Pipoca estava muito cara", "Shopping Jockey Plaza");
+INSERT INTO Filmes(FilmeID, NomeFilme, ComentarioFilme, DiretorID, SessaoID, EstudioID) Values (4, "Harry Potter e A Pedra Filosofal", "Não sou fã dessa série", 4, 3, 1);
+UPDATE Sessoes
+SET FilmeID = 4
+WHERE SessaoID = 3;
+
+INSERT INTO Sessoes(SessaoID, Local) Values (4, "Cine Passeio");
+INSERT INTO Filmes(FilmeID, NomeFilme, DiretorID, SessaoID, EstudioID) Values (2, "Transformers 2", 2, 4, 4);
+UPDATE Sessoes
+SET FilmeID = 2
+WHERE SessaoID = 4
+
+INSERT INTO Generos(GeneroID, NomeGenero) Values (1, "Ação");
+INSERT INTO Generos(GeneroID, NomeGenero) Values (2, "Ficção");
+INSERT INTO Generos(GeneroID, NomeGenero) Values (3, "Romance");
+INSERT INTO Generos(GeneroID, NomeGenero) Values (4, "Comédia");
+INSERT INTO Generos(GeneroID, NomeGenero) Values (5, "Terror");
+INSERT INTO Generos(GeneroID, NomeGenero) Values (6, "Animação");
+INSERT INTO Generos(GeneroID, NomeGenero) Values (7, "Drama");
+
+CREATE TABLE GenerosFilmes (
+GeneroID INTEGER REFERENCES Generos(GeneroID),
+FilmeID INTEGER REFERENCES Filmes(FilmeID)
+);
+
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(1, 1);
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(1, 6);
+
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(2, 1);
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(2, 2);
+
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(3, 4);
+
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(4, 1);
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(4, 2);
+INSERT INTO GenerosFilmes(FilmeID, GeneroID) Values(4, 7);
+
+
+CREATE TABLE AtoresFilmes (
+AtorID INTEGER REFERENCES Atores(AtorID),
+FilmeID INTEGER REFERENCES Filmes(FilmeID)
+)
+
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(1, 1);
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(1, 5);
+
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(2, 3);
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(2, 5);
+
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(3, 1);
+
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(4, 2);
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(4, 4);
+INSERT INTO AtoresFilmes(FilmeID, AtorID) Values(4, 6);
+
+CREATE TABLE AcompanhaSessao (
+AcompanhanteID INTEGER REFERENCES Acompanhantes(AcompanhanteID),
+SessaoID INTEGER REFERENCES Sessoes(SessaoID)
+);
+
+INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (1, 3);
+INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (1, 4);
+
+INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (2, 2);
+INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (2, 1);
+
+INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (4, 3);
+INSERT INTO AcompanhaSessao (SessaoID, AcompanhanteID) Values (4, 5);
